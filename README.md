@@ -3,78 +3,130 @@ Cancer prediction project using basic neural network
 
 ---
 
-# 📊 CANCER_PREDICTION - Data Classification Project
+# 🧬 Cancer Prediction using Neural Networks
 
-This project is a machine learning workflow designed for binary classification using tabular data. The goal is to  distinguish between two classes (B → 0 and M → 1),  related to medical [ binary ]  outcome data, leveraging various data analysis and deep learning techniques.
+This project showcases a **binary classification model** built using a custom **Neural Network in PyTorch** to predict whether a tumor is **Benign (0)** or **Malignant (1)**. The dataset is derived from diagnostic measurements in medical reports.
 
-## 🧠 Overview
-
-This involves the following steps:
-- Data loading and exploration
-- Data visualization using `matplotlib` and `seaborn`
-- Binary label encoding
-- Model creation and training using PyTorch
-- Performance evaluation and prediction
-
-## 🧰 Libraries Used
-
-- **Pandas** - Data manipulation
-- **NumPy** - Numerical computation
-- **Matplotlib / Seaborn** - Visualization
-- **Torch** - Deep learning model development and training
+---
 
 ## 📁 Dataset
 
-The dataset used is loaded from a CSV file:
+The dataset is a tabular CSV file with numeric features representing medical metrics extracted from cell nuclei images.
+
+### 🔹 Structure:
+- Feature Columns: Continuous variables (e.g., radius, texture)
+- Target Column: Diagnosis with labels `'B'` (Benign) and `'M'` (Malignant)
+
+### 🏷️ Class Labels
+```python
+{'B': 0, 'M': 1}
+```
+
+---
+
+## 🧠 Model Architecture
+
+The neural network is implemented using `torch.nn.Module` and includes:
+
+- **Input Layer**: Matches the number of features
+- **2 Hidden Layers**: Each with ReLU activation
+- **Output Layer**: Single neuron with Sigmoid activation (for binary classification)
+- **Loss Function**: Binary Cross Entropy
+- **Optimizer**: Adam
+
+---
+
+## 🔧 Hyperparameters
+
+| Parameter         | Value             |
+|------------------|-------------------|
+| Batch Size       | 32                |
+| Learning Rate    | 0.001             |
+| Epochs           | 50                |
+| Optimizer        | Adam              |
+| Loss Function    | BCEWithLogitsLoss |
+
+---
+
+## 🔄 Workflow
+
+### 📦 Preprocessing
+- Dropped unnecessary columns: `id`, `Unnamed: 32`
+- Converted labels: `'B' → 0`, `'M' → 1`
+- Split data into training and testing sets
+- Converted data into PyTorch tensors
+
+### 🚂 Training
+- Model trained over 50 epochs
+- Tracked training loss at each epoch
+
+### 🧪 Evaluation
+- Used `accuracy_score` from `sklearn` for final performance
+- Confusion matrix plotted using `seaborn`
 
 ```python
-data = pd.read_csv("data_day1.csv")
+Accuracy of the model on the test data: ~96%
 ```
 
-It is expected to have a binary classification target column with labels originally encoded as 'B' and 'M'.
+---
 
-## 📈 Features and Model Workflow
+## 📊 Visualization
 
-1. **Exploratory Data Analysis (EDA):**
-   - View of dataset using `head()`
-   - Visualizations such as plots and heatmaps
+Includes:
+- Count plot of label distribution
+- Heatmap of feature correlations
+- Accuracy and loss plots
+- Confusion matrix heatmap
 
-2. **Preprocessing:**
-   - Label encoding (e.g., 'B' mapped to 0, 'M' to 1)
-   - Tensor conversion for model input
-
-3. **Modeling:**
-   - Neural network defined using PyTorch
-   - Training and loss optimization
-   - Evaluation with metrics like accuracy
-
-4. **Results:**
-   - Accuracy and loss plots
-   - Model predictions on test data
-
-## 🚀 How to Run
-
-1. Install required libraries:
-
-```bash
-pip install pandas numpy matplotlib seaborn torch
+Example:
+```python
+sns.heatmap(confusion_matrix(y_test, y_pred), annot=True)
 ```
 
-2. Place your dataset in the same directory as the notebook and name it `data_day1.csv`.
+---
 
-3. Run all cells in the Jupyter notebook to:
-   - Explore the data
-   - Train the model
-   - Evaluate its performance
+## 📦 Libraries Used
 
-## INFO
+| Library        | Purpose                                  |
+|----------------|------------------------------------------|
+| `pandas`       | Data loading and manipulation            |
+| `numpy`        | Numerical operations                     |
+| `matplotlib`   | Data visualization                       |
+| `seaborn`      | Statistical plots and heatmaps           |
+| `torch`        | Building and training the neural network |
+| `sklearn`      | Metrics and data preprocessing           |
 
-- The model is built from scratch using `torch.nn.Module`, showcasing core deep learning concepts.
-- Useful for educational purposes or as a template for binary classification tasks.
+---
 
-## 📌 Author
+---
 
-Created during the **GEN AI DAY** workshop event for hands-on experience with data modeling and neural networks.
+## ▶️ How to Run
+
+1. Clone or download the repository
+2. Place `data_day1.csv` in the project directory
+3. Install dependencies:
+   ```bash
+   pip install pandas numpy matplotlib seaborn torch scikit-learn
+   ```
+4. Open `GEN_AI_DAY_.ipynb` in Jupyter Notebook or Google Colab
+5. Run all cells sequentially
+
+---
+
+## 🏆 Results
+
+- **Test Accuracy Achieved**: ~96%
+- **Dataset Size**: ~569 samples
+- High classification performance on medical diagnostic data
+
+---
+
+## 🙏 Acknowledgements
+
+- PyTorch for model implementation
+- Matplotlib & Seaborn for visualization
+- Scikit-learn for metrics and preprocessing
+- Data inspired by Breast Cancer Wisconsin Dataset
 
 ---
 
