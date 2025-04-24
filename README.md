@@ -1,8 +1,6 @@
 # CANCER_PREDICTION
 Cancer prediction project using basic neural network
 
-Based on the structure and contents of your Jupyter notebook, here’s a professional, clear, and well-structured README file that explains the purpose, methods, and usage of your project:
-
 ---
 
 # 📊 CANCER_PREDICTION - Data Classification Project
