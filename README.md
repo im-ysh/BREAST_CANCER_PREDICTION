@@ -108,7 +108,7 @@ sns.heatmap(confusion_matrix(y_test, y_pred), annot=True)
    ```bash
    pip install pandas numpy matplotlib seaborn torch scikit-learn
    ```
-4. Open `GEN_AI_DAY_.ipynb` in Jupyter Notebook or Google Colab
+4. Open `CANCER_PREDICTION_.ipynb` in Jupyter Notebook or Google Colab
 5. Run all cells sequentially
 
 ---
