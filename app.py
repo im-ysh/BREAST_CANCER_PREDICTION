@@ -10,7 +10,7 @@ model, scaler = load_model_and_scaler()
 
 @st.cache_data
 def get_clean_data():
-    data = pd.read_csv("data/data.csv")
+    data = pd.read_csv("data/data_day1.csv")
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
     data['diagnosis'] = data['diagnosis'].map({'M': 1, 'B': 0})
     return data
