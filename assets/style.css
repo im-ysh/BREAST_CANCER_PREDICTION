@@ -1,0 +1,10 @@
+.diagnosis.benign {
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+}
+.diagnosis.malicious {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
